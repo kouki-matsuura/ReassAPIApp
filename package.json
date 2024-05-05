@@ -28,7 +28,8 @@
     "eslint-plugin-unused-imports": "^3.2.0",
     "prettier": "^3.2.5",
     "typescript": "^5.0.2",
-    "vite": "^4.4.5"
+    "vite": "^4.4.5",
+    "vite-tsconfig-paths": "^4.3.2"
   },
   "module": "index.ts"
 }
