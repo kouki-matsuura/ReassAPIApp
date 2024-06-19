@@ -6,15 +6,14 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --fix --max-warnings 0",
+    "fmt":  "prettier \"**/*.{tsx,ts,js,cjs,mjs,html,yml,json,md}\" --write",
     "preview": "vite preview",
-    "prepare": "husky",
-    "lint:precommit": "eslint 'src/**/*.{ts,tsx}' --max-warnings 0",
-    "fmt:precommit": "prettier -l './**/*.{js,jsx,ts,tsx,json,css,scss}'"
+    "prepare": "husky"
   },
   "lint-staged": {
-    "src/**/*.{ts,tsx}": "bun run lint:precommit",
-    "src/**/*.{js,jsx,ts,tsx,json,css,scss}": "bun run fmt:precommit"
+    "src/**/*.{ts,tsx}": "eslint . --ext ts,tsx --report-unused-disable-directives --fix --max-warnings 0",
+    "src/**/*.{tsx,ts,js,cjs,mjs,html,yml,json,md}": "prettier \"**/*.{tsx,ts,js,cjs,mjs,html,yml,json,md}\" --write"
   },
   "dependencies": {
     "axios": "^1.6.8",
@@ -25,10 +24,12 @@
     "recharts": "^2.12.7"
   },
   "devDependencies": {
+    "@tanstack/eslint-plugin-query": "^5.43.1",
     "@types/react": "^18.2.15",
     "@types/react-dom": "^18.2.7",
     "@typescript-eslint/eslint-plugin": "^6.0.0",
     "@typescript-eslint/parser": "^6.0.0",
+    "@typescript-eslint/typescript-estree": "^7.13.1",
     "@vitejs/plugin-react-swc": "^3.3.2",
     "bun-types": "latest",
     "eslint-config-prettier": "^9.1.0",
@@ -37,9 +38,9 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.3",
     "eslint-plugin-unused-imports": "^3.2.0",
-    "prettier": "^3.2.5",
     "husky": "9.0.11",
-    "typescript": "^5.0.2",
+    "prettier": "^3.2.5",
+    "typescript": "5.3.3",
     "vite": "^4.4.5",
     "vite-tsconfig-paths": "^4.3.2"
   },
