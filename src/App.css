@@ -4,3 +4,11 @@
   padding: 2rem;
   text-align: center;
 }
+
+.populationButtons {
+  width: 50%;
+  display: flex;
+  margin: 20px auto;
+  align-items: center;
+  gap: 10px;
+}

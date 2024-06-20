@@ -1,11 +1,11 @@
 import { useCallback, useEffect, useState } from 'react';
-import { useForm } from 'react-hook-form';
+import { useFormContext } from 'react-hook-form';
 import { useFetchPerfectures } from '../hooks/useFetchPerfectures';
 import { useFetchPopulationComposition } from '../hooks/useFetchPopulationComposition';
 import { AppPresenter } from '../presenter/AppPresenter';
 
 export const AppContainer: React.FC = () => {
-  const { register, watch, handleSubmit, getValues } = useForm();
+  const { watch, handleSubmit, getValues } = useFormContext();
   const [prefCodes, setPrefCodes] = useState<string[]>([]);
   const { isLoading: isPrefecturesLoading, error, data: prefectures } = useFetchPerfectures();
   const { datas: populations, isLoading: isPopulationLoading } = useFetchPopulationComposition(prefCodes);
@@ -23,7 +23,7 @@ export const AppContainer: React.FC = () => {
     return () => subscription.unsubscribe();
   }, [watch, handleSubmit, onSubmit]);
 
-  if (isPrefecturesLoading || !prefectures || isPopulationLoading) {
+  if (isPrefecturesLoading || !prefectures) {
     return <div>ロード中...</div>;
   }
 
@@ -35,7 +35,7 @@ export const AppContainer: React.FC = () => {
     prefectures,
     populations,
     prefCodes,
-    register,
+    isPopulationLoading,
   };
 
   return <AppPresenter {...args} />;
