@@ -1,13 +1,12 @@
-import { memo } from 'react';
-import { FieldValues, UseFormRegister } from 'react-hook-form';
+import { useFormContext } from 'react-hook-form';
 
 type CheckboxProps = {
   name: string;
   label: string;
-  register: UseFormRegister<FieldValues>;
 };
 
-const M_Checkbox: React.FC<CheckboxProps> = ({ name, label, register }) => {
+export const Checkbox: React.FC<CheckboxProps> = ({ name, label }) => {
+  const { register } = useFormContext();
   return (
     <label>
       <input type="checkbox" {...register(name)} />
@@ -15,5 +14,3 @@ const M_Checkbox: React.FC<CheckboxProps> = ({ name, label, register }) => {
     </label>
   );
 };
-
-export const Checkbox = memo(M_Checkbox);
