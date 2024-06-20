@@ -1,5 +1,3 @@
-import { FieldValues, UseFormRegister } from 'react-hook-form';
-
 // 都道府県情報
 export type Prefecture = {
   prefCode: number;
@@ -9,7 +7,6 @@ export type Prefecture = {
 // 都道府県選択フォーム型
 export type PrefecutresProps = {
   prefectures: Prefecture[];
-  register: UseFormRegister<FieldValues>;
 };
 
 // 人口構成情報
