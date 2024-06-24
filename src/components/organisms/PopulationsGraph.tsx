@@ -1,6 +1,6 @@
 import { memo, useCallback, useEffect, useMemo, useState } from 'react';
 import { CartesianGrid, Legend, Line, LineChart, Tooltip, XAxis, YAxis } from 'recharts';
-import { DATA_TYPE } from '../constants';
+import { AXIS_COLORS, DATA_TYPE } from '../constants';
 import { DataType, FormatPopulationComposition, PopulationComposition, Prefecture } from '../types';
 
 type PopulationGraphProps = {
@@ -70,9 +70,11 @@ export const PopulationGraph: React.FC<PopulationGraphProps> = ({
 
   if (!formatPopulationData) return <>表示するデータが存在しません</>;
 
+  if (prefCodes.length > 10) return <p style={{ color: 'red' }}>表示できるデータは10個までです。</p>;
   return (
     <>
       <RenderButtons />
+      <div style={{ marginTop: '20px' }} />
       <LineChart
         width={700}
         height={400}
@@ -84,8 +86,8 @@ export const PopulationGraph: React.FC<PopulationGraphProps> = ({
         <YAxis />
         <Tooltip />
         <Legend />
-        {prefNames.map((prefName) => {
-          return <Line type="monotone" dataKey={prefName} key={prefName} />;
+        {prefNames.map((prefName, index) => {
+          return <Line type="monotone" dataKey={prefName} key={prefName} stroke={AXIS_COLORS[index]} />;
         })}
       </LineChart>
     </>
