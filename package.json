@@ -6,16 +6,18 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
+    "test": "jest",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --fix --max-warnings 0",
-    "fmt":  "prettier \"**/*.{tsx,ts,js,cjs,mjs,html,yml,json,md}\" --write",
+    "fmt": "prettier \"**/*.{tsx,ts,js,cjs,mjs,html,yml,json,md}\" --write",
     "preview": "vite preview",
     "prepare": "husky"
   },
   "lint-staged": {
-    "src/**/*.{ts,tsx}": "eslint . --ext ts,tsx --report-unused-disable-directives --fix --max-warnings 0",
-    "src/**/*.{tsx,ts,js,cjs,mjs,html,yml,json,md}": "prettier \"**/*.{tsx,ts,js,cjs,mjs,html,yml,json,md}\" --write"
+      "*.{ts,tsx}": ["eslint . --ext ts,tsx --report-unused-disable-directives --fix --max-warnings 0"],
+      "*.{tsx,ts,js,cjs,mjs,html,yml,json,md}": ["prettier \"**/*.{tsx,ts,js,cjs,mjs,html,yml,json,md}\" --write"]
   },
   "dependencies": {
+    "@babel/preset-typescript": "^7.24.7",
     "axios": "^1.6.8",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -24,13 +26,17 @@
     "recharts": "^2.12.7"
   },
   "devDependencies": {
+    "@babel/core": "^7.24.7",
+    "@babel/preset-env": "^7.24.7",
     "@tanstack/eslint-plugin-query": "^5.43.1",
+    "@types/jest": "^29.5.12",
     "@types/react": "^18.2.15",
     "@types/react-dom": "^18.2.7",
     "@typescript-eslint/eslint-plugin": "^6.0.0",
     "@typescript-eslint/parser": "^6.0.0",
     "@typescript-eslint/typescript-estree": "^7.13.1",
     "@vitejs/plugin-react-swc": "^3.3.2",
+    "babel-jest": "^29.7.0",
     "bun-types": "latest",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-import": "^2.29.1",
@@ -39,7 +45,11 @@
     "eslint-plugin-react-refresh": "^0.4.3",
     "eslint-plugin-unused-imports": "^3.2.0",
     "husky": "9.0.11",
+    "jest": "^29.7.0",
+    "lint-staged": "^15.2.7",
     "prettier": "^3.2.5",
+    "ts-jest": "^29.1.5",
+    "ts-node": "^10.9.2",
     "typescript": "5.3.3",
     "vite": "^4.4.5",
     "vite-tsconfig-paths": "^4.3.2"

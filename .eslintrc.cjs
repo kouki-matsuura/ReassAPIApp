@@ -1,6 +1,14 @@
 module.exports = {
   root: true,
   env: { browser: true, es2020: true },
+  overrides: [
+    {
+      files: ['tests/**/*'],
+      env: {
+        jest: true,
+      },
+    },
+  ],
   extends: [
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
